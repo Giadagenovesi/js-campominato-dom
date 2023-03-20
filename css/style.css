@@ -1,0 +1,83 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+
+/* style */
+.play-btn {
+    padding: 0 2rem;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo h1 {
+    font-size: 2.5rem;
+}
+.logo img{
+    width: 50px;
+    margin-right: 20px;
+}
+
+/* Layout */
+header {
+    height: 90px;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+main {
+    background-color: #083b4c;
+    padding: 3rem;
+}
+.container {
+    width: 60%;
+    margin: 0 auto;
+}
+.grid {
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.square {
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+}
+.difficult {
+    margin-left: 2px;
+}
+.easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+.medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+.hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+footer {
+    width: 100%;
+    height: 60px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+.lightblue {
+    background-color: lightblue;
+}
