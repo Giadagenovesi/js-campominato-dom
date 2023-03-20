@@ -4,11 +4,12 @@
 //Aggiungere una select accanto al bottone di generazione, che fornisca una scelta tra tre diversi livelli di difficoltà:
 
 // Dichiarazioni:
-let numberOfSquares = "";
 const difficultSelector = document.getElementById("difficult");
 const playBtn = document.querySelector(".play-btn")
 const grid = document.querySelector(".grid");
+let numberOfSquares = "";
 let bombs = "";
+let maxClick = 0;
 //Creo 1 arrey vuoto dei numeri cliccati dall'utente
 let clickedNumberArrey = [];
 
@@ -16,7 +17,7 @@ let clickedNumberArrey = [];
 playBtn.addEventListener("click", function() {
     grid.innerHTML = "";
     if (difficultSelector.value === "easy") {
-        numberOfSquares = 100; 
+        numberOfSquares = 100;
     } else if (difficultSelector.value === "medium") {
         numberOfSquares = 81;
     } else {
@@ -33,6 +34,8 @@ playBtn.addEventListener("click", function() {
     //Generazione delle bombe
     bombs = generateBombs(16, numberOfSquares);
     console.log(bombs);
+    maxClick = numberOfSquares - bombs.length;
+    console.log( maxClick);
 }) 
   
 ///////////////////////////////////////////////////////
@@ -59,14 +62,13 @@ function generateBombs(numbersQuantity, maxBombsNumber) {
     return numbers;   
 }
 
+// Funzione che genera dei numeri random da min a max
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-
 //Al click del utente cambia il colore dello sfondo del quadrato
 function userClick() {
-    
     //prendo il numero all'intero della cella cliccata
     const clickedNumber = parseInt(this.textContent);
     console.log(clickedNumber);
@@ -75,22 +77,21 @@ function userClick() {
         // stampo HAI PERSO
     if (bombs.includes(clickedNumber)) {
         this.classList.add("bomb")
-        console.log("BOOM!! HAI TROVATO LA BOMBA, HAI PERSO!!");
+        alert("BOOOOOM!! HAI TROVATO LA BOMBA, HAI PERSO!!");
     //ALTRIMENTI la cella diventa azzurra
     } else {
         this.classList.add("lightblue");
-    }
-    
-    // SE il numero non è nell'arrey dei numeri cliccati
-            
+        // SE il numero non è nell'arrey dei numeri cliccati
         //pusho il numero nell'arrey dei numeri cliccati
         //SE la lunghezza dell'arrey è uguale al numero di click massimo 
-            //stampo HAI VINTO
-    if (!clickedNumberArrey.includes(clickedNumber)) {
-        clickedNumberArrey.push(clickedNumber);
-    }
-        
+            //stampo HAI VINTO 
+        if (!clickedNumberArrey.includes(clickedNumber)) {
+            clickedNumberArrey.push(clickedNumber);
+            if (clickedNumberArrey.length === maxClick) {
+                alert("CONGRATULAZIONIIIIII HAI VINTO!!!!!");
+            }
+        }
+    } 
+    console.log(clickedNumberArrey.length);
 }
 
-
-console.log(clickedNumberArrey);
