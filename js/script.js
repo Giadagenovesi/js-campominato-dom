@@ -40,7 +40,6 @@ playBtn.addEventListener("click", function() {
   
 ///////////////////////////////////////////////////////
 // FUNCTION
-
 /**
  * Description Funzione che genera un numero random da 1 a maxBombsNumber,senza ripetizioni
  * @param {number} numbersQuantity
@@ -61,13 +60,12 @@ function generateBombs(numbersQuantity, maxBombsNumber) {
     }
     return numbers;   
 }
-
 // Funzione che genera dei numeri random da min a max
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-//Al click del utente cambia il colore dello sfondo del quadrato
+//Funzione che al click dell' utente cambia il colore dello sfondo del quadrato in modo diverso se il quadrato è una bomba oppure no
 function userClick() {
     //prendo il numero all'intero della cella cliccata
     const clickedNumber = parseInt(this.textContent);
@@ -77,21 +75,21 @@ function userClick() {
         // stampo HAI PERSO
     if (bombs.includes(clickedNumber)) {
         this.classList.add("bomb")
-        alert("BOOOOOM!! HAI TROVATO LA BOMBA, HAI PERSO!!");
+        console.log("BOOOOOM!! HAI TROVATO LA BOMBA, HAI PERSO!! Il tuo punteggio è", clickedNumberArrey.length);
     //ALTRIMENTI la cella diventa azzurra
     } else {
         this.classList.add("lightblue");
         // SE il numero non è nell'arrey dei numeri cliccati
         //pusho il numero nell'arrey dei numeri cliccati
-        //SE la lunghezza dell'arrey è uguale al numero di click massimo 
-            //stampo HAI VINTO 
+
         if (!clickedNumberArrey.includes(clickedNumber)) {
             clickedNumberArrey.push(clickedNumber);
+            //SE la lunghezza dell'arrey è uguale al numero di click massimo 
+            //stampo HAI VINTO 
             if (clickedNumberArrey.length === maxClick) {
-                alert("CONGRATULAZIONIIIIII HAI VINTO!!!!!");
+                console.log("CONGRATULAZIONIIIIII HAI VINTO!!!!! Il tuo punteggio è", clickedNumberArrey.length);
             }
         }
     } 
-    console.log(clickedNumberArrey.length);
 }
 
